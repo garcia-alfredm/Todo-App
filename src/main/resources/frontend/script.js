@@ -11,7 +11,7 @@
 </div>
  */
 
-let domain = "http://localhost:7000";
+let domain = "";
 
 window.addEventListener("load", () => {
     populateTodos();
