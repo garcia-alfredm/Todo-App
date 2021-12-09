@@ -22,12 +22,18 @@ async function populateTodos(){
     let response = await fetch(`${domain}/todo`);
     let data = await response.json();   //will be an array
 
+    //reverse order of appearance of elements
+    //use id to sort
+    data.sort((a,b) => {
+        if(a.id > b.id)
+            return -1;
+        else return 1;
+    })
+
     //clear container
     let todoContainer = document.getElementById("todo-container");
     todoContainer.innerHTML = "";
     //todoContainer.replaceChildren(); is same
-
-
 
     //loop thru each todo and create the dom elements
     data.forEach(todo => {
@@ -48,8 +54,6 @@ async function populateTodos(){
         //append to container
         todoContainer.appendChild(todoItemElem);
     });
-
-    
 }
 
 async function createTodo(e){
@@ -72,6 +76,8 @@ async function createTodo(e){
 }
 
 async function completeTodo(e){
+    console.log(e.target.id);
+
     //get id of todo to complete
     let id = e.target.id.slice("complete-btn-".length, e.target.id.length);
     
@@ -81,19 +87,17 @@ async function completeTodo(e){
     })
 
     populateTodos();
-
 }
 
 async function deleteTodo(e){
+
     //get id of todo to complete
     let id = e.target.id.slice("delete-btn-".length, e.target.id.length);
     
-
     //send req. to complete todo
     await fetch(`${domain}/todo/${id}`, {
         method: "DELETE"
     })
 
     populateTodos();
-
 }

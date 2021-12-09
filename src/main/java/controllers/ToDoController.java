@@ -44,7 +44,7 @@ public class ToDoController {
     }
 
     public static void updateToDo(Context context){
-        Integer todoId = Integer.parseInt(context.queryParam("id"));
+        Integer todoId = Integer.parseInt(context.pathParam("id"));
         toDoService.completeToDo(todoId);
         context.result("Todo with id:" + todoId + " has been completed");
     }
