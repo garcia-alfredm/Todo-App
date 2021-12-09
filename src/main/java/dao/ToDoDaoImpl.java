@@ -90,7 +90,7 @@ public class ToDoDaoImpl implements ToDoDao{
             //conn.close();
         } catch (SQLException e) {
             //e.printStackTrace();
-            //logger.error(e);
+            logger.error(e);
         }
         return todos;
     }
@@ -120,7 +120,7 @@ public class ToDoDaoImpl implements ToDoDao{
             //in the try() we put the variable we want auto closed
             //conn.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
         return toDo;
     }
@@ -141,7 +141,7 @@ public class ToDoDaoImpl implements ToDoDao{
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -161,7 +161,7 @@ public class ToDoDaoImpl implements ToDoDao{
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
@@ -180,7 +180,7 @@ public class ToDoDaoImpl implements ToDoDao{
             ps.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 }
