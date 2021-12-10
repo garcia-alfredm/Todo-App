@@ -40,13 +40,10 @@ public class ToDoDaoImpl implements ToDoDao{
     * */
 
     /*jdbc:postgresql://[your endpoint here]/[the specific database you want to connec to*/
-    //String url = "jdbc:postgresql://jwa-db.cxwdgujyiyjs.us-east-1.rds.amazonaws.com/tododatabase";
     //String url = "jdbc:postgresql://" + System.getenv("AWS_RDS_ENDPOINT") + "/tododatabase";
 
-    //String username = "postgres";
     //String username = System.getenv("RDS_USERNAME");
 
-    //String password = "p4ssw0rd";
     //String password = System.getenv("RDS_PASSWORD");
 
     String url;
@@ -149,7 +146,6 @@ public class ToDoDaoImpl implements ToDoDao{
     public void updateToDo(Integer toDoId) {
         //creates active connection to the database
         try(Connection conn = DriverManager.getConnection(url, username, password);) {
-            //Connection conn = DriverManager.getConnection(url, username, password);
 
             String sql = "UPDATE todos SET completed = TRUE WHERE id = ?;";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -168,7 +164,6 @@ public class ToDoDaoImpl implements ToDoDao{
     @Override
     public void deleteToDo(Integer toDoId) {
         try(Connection conn = DriverManager.getConnection(url, username, password);) {
-            //Connection conn = DriverManager.getConnection(url, username, password);
 
             String sql = "DELETE FROM todos WHERE id = ?;";
             PreparedStatement ps = conn.prepareStatement(sql);
